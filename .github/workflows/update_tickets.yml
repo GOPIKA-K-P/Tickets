@@ -25,6 +25,7 @@ jobs:
       run: |
         git config --global user.email "action@github.com"
         git config --global user.name "GitHub Action"
+        git pull origin main
         git add README.md
         git commit -m "Update ticket count"
-        git push
+        git push origin main
