@@ -1,0 +1,30 @@
+name: Update Tickets
+
+on:
+  schedule:
+    - cron: '*/2 * * * *'
+
+jobs:
+  update-tickets:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Bash
+      uses: actions/setup-node@v3
+      with:
+        node-version: '14'
+
+    - name: Run update tickets script
+      run: |
+        bash scripts/update_tickets.sh
+
+    - name: Commit changes
+      run: |
+        git config --global user.email "action@github.com"
+        git config --global user.name "GitHub Action"
+        git add README.md
+        git commit -m "Update ticket count [skip ci]"
+        git push
