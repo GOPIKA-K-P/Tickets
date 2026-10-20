@@ -1,3 +1,3 @@
 # Ticket Counter
 
-Tickets: 5
+Tickets: 0
